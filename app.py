@@ -68,14 +68,16 @@ if selected == "Home":
     Upload a brain MRI image (JPG/PNG), and this app will classify the type of brain tumor detected.
     """)
 
+    st.error('Caustion: This is not a proper model and does not give you any meaningful results !!')
+
     uploaded_file = st.file_uploader("Choose an MRI image...", type=["jpg", "jpeg", "png"])
 
     if uploaded_file:
         image = Image.open(uploaded_file).convert("L")
-        image_rgb = image.convert("RGB")
-        st.image(image_rgb, caption="Uploaded MRI Image", width = 300)
+        #image_rgb = image.convert("RGB")
+        st.image(image, caption="Uploaded MRI Image", width = 300)
 
-        img_resized = image_rgb.resize(IMG_SIZE)
+        img_resized = image.resize(IMG_SIZE)
         img_array = tf.keras.preprocessing.image.img_to_array(img_resized)
         #img_array = img_array / 255.0
         img_array = np.expand_dims(img_array, axis=0)
@@ -125,7 +127,7 @@ elif selected == "Model Info":
     # Model Summary Button with toggle
     if st.button("📄 View Visual Architecture"):
         try:
-            #plot_model(model, to_file=plot_path, show_shapes=True, show_layer_names=True)
+            plot_model(model, to_file=plot_path, show_shapes=True, show_layer_names=True)
             st.image(plot_path, caption="Model Architecture")
         except Exception as e:
             st.error(f"Unable to generate model architecture plot. Error: {e}")
