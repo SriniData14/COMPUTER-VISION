@@ -11,7 +11,7 @@ import os
 import matplotlib.pyplot as plt
 
 
-MODEL_PATH = 'model.h5'
+MODEL_PATH = 'brain_tumor_classification.h5'
 CLASS_NAMES = ['glioma', 'meningioma', 'no_tumor', 'pituitary']
 IMG_SIZE = (128, 128)
 plot_path = "model_architecture.png"
