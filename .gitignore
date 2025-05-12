@@ -1,2 +1,6 @@
 venv/
 test.py
+data/
+data
+model.h5
+resnet50_notop.h5
