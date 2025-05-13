@@ -107,23 +107,39 @@ elif selected == "Model Info":
     st.header("📈 Model Performance")
     st.write("""
     **Model Summary:**
-    - Architecture: CNN + ResNet Base
-    - Input Size: 128x128x3
+    - Architecture: CNN
+    - Input Size: 128x128x1
 
     **Accuracy Scores:**
-    - Training Accuracy: **96.7%**
-    - Validation Accuracy: **95.7%**
-    - Test Accuracy: **87.6%**
+    - Training Accuracy: **91.8%**
+    - Validation Accuracy: **90.2%**
     
     This model was trained on a public brain tumor MRI dataset with data augmentation and early stopping. It is designed for experimental or research purposes only.
-    
-    **Note:** Difference of approximately 8% between validation and test accuracy may point to:
-
-    - Slight overfitting to the training/validation data.
     """)
 
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.write("""
+            **Test Scores**
+            - Accuracy:  **82.2**
+            - Precision:  **83.2**
+            - Recall:  **82.3**
+            - F1:  **82.3**
+
+            **NOTE: The difference of approximately 8% in accuracy might suggest in overfitting of the model on the training set,
+            there is a lot of room for improvment to the model**
+        """)
+
+    with col2:
+        st.subheader("Confusion Matrix")
+        try:
+            st.image("confusion_matrix.png", caption="Confusion Matrix")
+        except Exception as e:
+            st.warning(f"Could not load confusion matrix: {e}")
+
     # Model Summary Button with toggle
-    if st.button("📄 View Visual Architecture"):
+    if st.button("View Model Architecture"):
         try:
             plot_model(model, to_file=plot_path, show_shapes=True, show_layer_names=True)
             st.image(plot_path, caption="Model Architecture")
@@ -133,7 +149,9 @@ elif selected == "Model Info":
     # Class-wise Pie chart
     st.subheader("Class Distribution in Training Dataset")
     labels = CLASS_NAMES
-    values = [25, 25, 25, 25]
+    values = [23.2, 23.4, 27.9, 25.5]
     fig_pie = go.Figure(data=[go.Pie(labels=labels, values=values, hole=0.3)])
     fig_pie.update_layout(title="Class Distribution", template="plotly_dark")
     st.plotly_chart(fig_pie)
+
+
