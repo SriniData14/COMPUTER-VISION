@@ -68,8 +68,6 @@ if selected == "Home":
     Upload a brain MRI image (JPG/PNG), and this app will classify the type of brain tumor detected.
     """)
 
-    st.error('Caustion: This is not a proper model and does not give you any meaningful results !!')
-
     uploaded_file = st.file_uploader("Choose an MRI image...", type=["jpg", "jpeg", "png"])
 
     if uploaded_file:
