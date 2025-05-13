@@ -48,6 +48,7 @@ namex==0.0.9
 narwhals==1.39.0
 nest-asyncio==1.6.0
 numpy==1.26.4
+opencv-python==4.11.0.86
 opt_einsum==3.4.0
 optree==0.15.0
 packaging==24.2
