@@ -11,7 +11,7 @@ Training with labeled dataset (e.g., Kaggle’s Brain MRI dataset)
 
 Evaluation using accuracy, precision, recall, and confusion matrix
 
-Flask web app for uploading and predicting brain tumor type
+Streamlit web app for uploading and predicting brain tumor type
 
 🛠️ Tech Stack
 Python
@@ -22,7 +22,7 @@ OpenCV
 
 Matplotlib / Seaborn
 
-Flask (for deployment)
+Streamlit (for deployment)
 
 📁 Dataset
 Used the Brain MRI Images for Brain Tumor Detection dataset from Kaggle. Contains T1-weighted contrast-enhanced MRI scans labeled by tumor type.
